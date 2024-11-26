@@ -25,48 +25,33 @@ class AgreementPlugin(Plugin):
             if CONFIG.agreement.pre_process_role not in event.member.roles or CONFIG.agreement.post_process_role in event.member.roles:
                 return event.reply(type=6)
 
-            first_name = MessageComponent()
-            first_name.type = ComponentTypes.TEXT_INPUT
-            first_name.style = TextInputStyles.SHORT
-            first_name.label = "First Name"
-            first_name.placeholder = "John"
-            first_name.required = True
-            first_name.custom_id = "first_name"
-
-            last_name = MessageComponent()
-            last_name.type = ComponentTypes.TEXT_INPUT
-            last_name.style = TextInputStyles.SHORT
-            last_name.label = "Last Name"
-            last_name.placeholder = "Doe"
-            last_name.required = True
-            last_name.custom_id = "last_name"
+            creed_agree = MessageComponent()
+            creed_agree.type = ComponentTypes.TEXT_INPUT
+            creed_agree.style = TextInputStyles.SHORT
+            creed_agree.label = "Do you swear by the Survivor's Creed?"
+            creed_agree.placeholder = "I swear!"
+            creed_agree.required = True
+            creed_agree.custom_id = "creed_agree"
 
             ar1 = ActionRow()
-            ar1.add_component(first_name)
-            ar2 = ActionRow()
-            ar2.add_component(last_name)
+            ar1.add_component(creed_agree)
 
             modal = MessageModal()
-            modal.title = "Confidentiality Rules"
+            modal.title = "Survivor's Creed"
             modal.custom_id = "agreement_submit"
             modal.add_component(ar1)
-            modal.add_component(ar2)
 
             return event.reply(type=9, modal=modal)
         else:
             if event.data.custom_id != "agreement_submit":
                 return
 
-            first_name = None
-            last_name = None
+            creed_agree = None
 
             for action_row in event.data.components:
                 for component in action_row.components:
-                    if component.custom_id == "first_name":
+                    if component.custom_id == "creed_agree":
                         first_name = component.value
-                        break
-                    if component.custom_id == "last_name":
-                        last_name = component.value
                         break
 
             try:
@@ -76,9 +61,9 @@ class AgreementPlugin(Plugin):
                 tmp_roles.remove(CONFIG.agreement.pre_process_role)
                 tmp_roles.append(CONFIG.agreement.post_process_role)
 
-                guild.get_member(event.member.id).modify(roles=tmp_roles, reason="User signed agreement. Assigning proper role!")
+                guild.get_member(event.member.id).modify(roles=tmp_roles, reason="Survivor's Creed signed! Assigning proper role!")
             except:
-                self.log.error(f"Unable to add role to user who signed the agreement. User ID {event.member.id}")
+                self.log.error(f"Unable to add role to user who signed the Survivor's Creed. User ID {event.member.id}")
             Agreement.create(user_id=event.member.id, first_name=first_name, last_name=last_name)
 
             return event.reply(type=6)
@@ -94,7 +79,7 @@ class AgreementPlugin(Plugin):
         button.type = ComponentTypes.BUTTON
         button.style = ButtonStyles.SECONDARY
         button.emoji = None
-        button.label = "Click to Sign"
+        button.label = "Click to sign the Survivor's Creed"
         button.custom_id = "agreement_start"
 
         ar.add_component(button)

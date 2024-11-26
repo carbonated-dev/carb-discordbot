@@ -10,6 +10,5 @@ class Agreement(SQLiteBase):
         table_name = 'agreement_submissions'
 
     user_id = BigIntegerField()
-    first_name = TextField()
-    last_name = TextField()
+    creed_agree = TextField()
     signed_date = DateTimeField(default=datetime.utcnow)
