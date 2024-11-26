@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 from peewee import BigIntegerField, DateTimeField, TextField
 
 from PunyBot.database import SQLiteBase
@@ -11,4 +11,4 @@ class Agreement(SQLiteBase):
 
     user_id = BigIntegerField()
     creed_agree = TextField()
-    signed_date = DateTimeField(default=datetime.utcnow)
+    signed_date = DateTimeField(default=datetime.datetime.now(datetime.UTC))

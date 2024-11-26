@@ -7,7 +7,7 @@ set -o nounset
 # Check if config.yaml is present, if so start the bot, otherwise exit
 if [ -f config/config.yaml ]; then
 #    exec python3 -m disco.cli --plugin PunyBot.plugins.core --plugin PunyBot.plugins.control
-    exec python3 -m disco.cli --plugin PunyBot.plugins.core --plugin PunyBot.plugins.control --token $DISCORD_TOKEN
+    exec python3 -m disco.cli --config config/config.yaml --token $DISCORD_TOKEN
 else
     echo "config.yaml not found, exiting"
     exit 1

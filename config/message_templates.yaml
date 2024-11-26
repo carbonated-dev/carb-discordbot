@@ -68,3 +68,8 @@ pickup_pregame_confirm_server_info: |-
       __Server Password__: ||`{server_password}`||
 
     Is all of the above correct?
+
+creed_agreement_failed: |-
+  You have attempted to sign using another name.
+  Signing the creed has failed.
+  You may try again.

@@ -17,10 +17,7 @@ services:
       - ./config:/app/config:z
       - data:/app/data:z
     command: /start
-    environment:
-      DISCORD_TOKEN: ""
-      TWITTER_BEARER_TOKEN: ""
-      STEAM_API_KEY: ""
+    env_file: ".env"
 
 volumes:
   data:
