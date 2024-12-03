@@ -158,12 +158,12 @@ class CorePlugin(Plugin):
         self.current_status_app = choice(CONFIG.status_apps)
         self.register_schedule(self.update_status, 5)
 
-    @Plugin.listen('Resumed')
-    def on_resumed(self, event):
-        with self.send_control_message() as embed:
-            embed.title = 'Resumed'
-            embed.color = 0xffb347
-            embed.add_field(name='Replayed Events', value=str(self.bot.client.gw.replayed_events))
+    # @Plugin.listen('Resumed')
+    # def on_resumed(self, event):
+    #     with self.send_control_message() as embed:
+    #         embed.title = 'Resumed'
+    #         embed.color = 0xffb347
+    #         embed.add_field(name='Replayed Events', value=str(self.bot.client.gw.replayed_events))
 
     @Plugin.listen('MessageCreate')
     def on_command_msg(self, event):
