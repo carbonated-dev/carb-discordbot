@@ -54,6 +54,7 @@ class BaseConfig(SlottedModel):
     media = Field(MediaConfig)
     agreement = Field(AgreementConfig, default=None)
     pickup_games = DictField(snowflake, DictField(text, PickupGamesConfig, default={}), default={})
+    auto_delete_channels = ListField(snowflake, default=[])
 
 
 CONFIG = BaseConfig(config_values)

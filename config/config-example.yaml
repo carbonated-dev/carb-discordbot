@@ -25,6 +25,10 @@ logging_channel: CHANNEL_ID
 # **NOTE: Requires steam publisher key**
 status_apps: [225600, 17580]
 
+# Auto Clean Message Channels
+# Channel IDs in this list will have all messages in them auto removed when they are sent.
+auto_delete_channels: [CHANNEL_1, CHANNEL_2]
+
 # Config section for the role selection menu/rules accept button.
 roles:
  SERVER_ID:

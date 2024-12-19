@@ -1,4 +1,4 @@
-ARG PYTHON_VERSION=3.11.6-slim-bookworm
+ARG PYTHON_VERSION=3.12.8-slim-bookworm
 # define an alias for the specfic python version used in this file.
 FROM python:${PYTHON_VERSION} as python
 
