@@ -11,6 +11,7 @@ bot:
     - PunyBot.plugins.pickup
     - PunyBot.plugins.agreement
     - PunyBot.plugins.kaboom
+    - PunyBot.plugins.form
 
 # These are the intents that the bot will need when connecting to Discord's API
 # See more about intents here: https://discord.com/developers/docs/topics/gateway#gateway-intents
@@ -28,6 +29,9 @@ status_apps: [225600, 17580]
 # Auto Clean Message Channels
 # Channel IDs in this list will have all messages in them auto removed when they are sent.
 auto_delete_channels: [CHANNEL_1, CHANNEL_2]
+
+# Channel to send submissions from the collaboration form.
+collab_form_submission_channel: CHANNEL_ID
 
 # Config section for the role selection menu/rules accept button.
 roles:

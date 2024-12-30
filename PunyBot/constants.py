@@ -55,6 +55,7 @@ class BaseConfig(SlottedModel):
     agreement = Field(AgreementConfig, default=None)
     pickup_games = DictField(snowflake, DictField(text, PickupGamesConfig, default={}), default={})
     auto_delete_channels = ListField(snowflake, default=[])
+    collab_form_submission_channel = Field(snowflake, default=None)
 
 
 CONFIG = BaseConfig(config_values)

@@ -17,7 +17,7 @@ rules_message: |-
   :heart: This server is meant to encourage fun and a sense of community, and we want you to be a part of that!
 
 agreement_message: |-
-  I have read the Survivor's Creed, or it was read to me, and I agree to abide by the rules of this Discord Server.  
+  I have read the Survivor's Creed, or it was read to me, and I agree to abide by the rules of this Discord Server.
 
 # title - Article Title
 # url - Article URL
@@ -73,3 +73,11 @@ creed_agreement_failed: |-
   You have attempted to sign using another name.
   Signing the creed has failed.
   You may try again.
+
+collab_form_message: |-
+  # Collaborations 💼
+  For collab proposals, please click the button below and fill out the form.
+  *Note: <@1217952023987748876> will DM you a copy of your submission.*
+
+collab_form_submission_success: |-
+  Submission Received! You should also receive a copy of your responses in your DMs. 📬
