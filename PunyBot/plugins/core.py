@@ -222,7 +222,7 @@ class CorePlugin(Plugin):
         components = ActionRow()
 
         select_menu = MessageComponent()
-        select_menu.type = ComponentTypes.SELECT_MENU
+        select_menu.type = ComponentTypes.STRING_SELECT
         select_menu.custom_id = f"roles_menu_{event.guild.id}"
         select_menu.placeholder = "Which roles would you like?"
 
@@ -230,6 +230,7 @@ class CorePlugin(Plugin):
             option = SelectOption()
             option.label = role.display_name
             option.value = role.role_id
+            option.emoji = None
 
             select_menu.options.append(option)
 
@@ -654,8 +655,10 @@ class CorePlugin(Plugin):
         return initial_message.edit(content=f"Echo Successful! 👍:\n{msg_link}")
 
 
-    @Plugin.listen("MessageCreate", conditional=lambda e: e.channel.id in CONFIG.auto_delete_channels)
+    @Plugin.listen("MessageCreate", conditional=lambda e: e.channel.id in CONFIG.auto_delete_channels and CONFIG.agreement.post_process_role not in e.member.roles)
     def auto_delete_messages(self, event):
+        if event.message.author.id == self.client.state.me.id:
+            return
         # Attempt to avoid rate limits on channel deletions.
         delay = random.uniform(0, 1.5)
         gevent.sleep(delay)

@@ -109,3 +109,23 @@ pickup_games:
       active_games_channel: CHANNEL_ID
       lfg_role: ROLE_ID
 
+# Section for tickets
+support_system:
+  # Roles that are marked as support.
+  support_roles: []
+  # Category where temporary channels will be created.
+  ticket_channel_category: CHANNEL_ID
+  # Channel where the tickets are queued.
+  ticket_submission_channel: CHANNEL_ID
+  # Channel where the closed ticket logs will show up.
+  ticket_logs_channel: CHANNEL_ID
+  # Support categories that show up in the dropdown
+  support_categories:
+    general: "General Support"
+    discord: "Discord Support"
+    other: "Other Support"
+  # Default close reasons for tickets. "Other" is added to be manually filled in by the user.
+  support_close_reasons:
+    - "Issue has been resolved."
+    - "Follow-up with team needed."
+    - "Support will continue via email."

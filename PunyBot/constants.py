@@ -45,6 +45,13 @@ class PickupGamesConfig(SlottedModel):
     lfg_role = Field(snowflake, default=None)
     # notify_time = Field(int, default=0)
 
+class SupportConfig(SlottedModel):
+    support_roles = ListField(snowflake, default=[])
+    ticket_channel_category = Field(snowflake, default=None)
+    ticket_submission_channel = Field(snowflake, default=None)
+    ticket_logs_channel = Field(snowflake, default=None)
+    support_categories = DictField(text, text, default={})
+    support_close_reasons = ListField(text, default=[])
 
 class BaseConfig(SlottedModel):
     admin_role = ListField(snowflake, default=[])
@@ -56,6 +63,7 @@ class BaseConfig(SlottedModel):
     pickup_games = DictField(snowflake, DictField(text, PickupGamesConfig, default={}), default={})
     auto_delete_channels = ListField(snowflake, default=[])
     collab_form_submission_channel = Field(snowflake, default=None)
+    support_system = Field(SupportConfig, default=None)
 
 
 CONFIG = BaseConfig(config_values)

@@ -12,7 +12,7 @@ feedparser = "^6.0.11"
 peewee = "^3.17.1"
 python-dateutil = "^2.9.0.post0"
 python-dotenv = "^1.0.1"
-betterdisco-py = {git = "https://github.com/elderlabs/BetterDisco.git", rev = "5182ae44a1efbccaa90ebce675a4d0abd41425f3", extras = ["performance", "yaml"]}
+betterdisco-py = {git = "https://github.com/elderlabs/BetterDisco.git", rev = "5db3fc7a2ae1af6807db395d8e5bf803af9d6b81", extras = ["performance", "yaml"]}
 
 [build-system]
 requires = ["poetry-core"]

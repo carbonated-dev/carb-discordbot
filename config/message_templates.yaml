@@ -81,3 +81,23 @@ collab_form_message: |-
 
 collab_form_submission_success: |-
   Submission Received! You should also receive a copy of your responses in your DMs. 📬
+
+support_form_message: |-
+  # Reach out to the team for support!
+  Please click the button below and follow the prompts to submit a ticket to our team. Should more information be needed, a private channel will be created for you!
+  *Note: <@1217952023987748876> will DM you following your submission.*
+
+support_form_submission_success: |-
+  Submission Received! Keep an eye on your DMs as the team may reach out to you for more information! 📬
+
+support_new_temp_channel_user: |-
+  ### Ticket `{ticket.id}` Updated
+  The team has reached out to you via a temporary support channel <#{channel_id}>!
+  *Please head over there to continue.*
+
+support_ticket_close_user: |-
+  ### Ticket `{ticket.id}` Closed
+  **Reason**
+  ```
+  {close_reason}
+  ```
