@@ -90,6 +90,16 @@ support_form_message: |-
 support_form_submission_success: |-
   Submission Received! Keep an eye on your DMs as the team may reach out to you for more information! 📬
 
+support_form_submission_no_dm: |-
+  Submission Received!
+
+  Your DMs are closed, so I was unable to forward a copy of your ticket to you.
+  I've attached it here. Please note down your Ticket ID.
+  *Note: You will **not** be notified if your ticket is closed while DMs are disabled.*
+
+support_new_temp_channel_no_dm: |-
+  ⚠ <@{ticket.user_id}> Unable to DM. A temporary support channel has been opened with you. ⚠
+
 support_new_temp_channel_user: |-
   ### Ticket `{ticket.id}` Updated
   The team has reached out to you via a temporary support channel <#{channel_id}>!

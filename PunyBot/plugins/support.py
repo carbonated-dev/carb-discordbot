@@ -195,11 +195,19 @@ class SupportPlugin(Plugin):
 
         ticket.ticket_extra["ticket_message"] = ticket_message.id
         ticket.save()
-        event.reply(type=4, content=Messages.support_form_submission_success, flags=(1 << 6))
+
+        could_dm = True
+
         try:
             event.member.user.open_dm().send_message("### Ticket Received!", embeds=[self.generate_ticket_embed(ticket, for_user=True)])
         except APIException as e:
-            pass
+            could_dm = False
+
+        if could_dm:
+            return event.reply(type=4, content=Messages.support_form_submission_success, flags=(1 << 6))
+        else:
+            return event.reply(type=4, content=Messages.support_form_submission_no_dm, embeds=[self.generate_ticket_embed(ticket, for_user=True)], flags=(1 << 6))
+
 
     @Plugin.listen("InteractionCreate", conditional=lambda e: e.type == InteractionType.MESSAGE_COMPONENT and e.data.custom_id.startswith("ticket_"))
     def manage_ticket(self, event):
@@ -233,7 +241,7 @@ class SupportPlugin(Plugin):
                 try:
                     user.open_dm().send_message(Messages.support_new_temp_channel_user.format(ticket=ticket, channel_id=support_channel.id))
                 except APIException as e:
-                    pass
+                    support_channel.send_message(Messages.support_new_temp_channel_no_dm.format(ticket=ticket), allowed_mentions={'parse': ["users"]})
                 return event.reply(type=6)
             case "close":
 
