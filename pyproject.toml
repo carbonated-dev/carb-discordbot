@@ -5,6 +5,9 @@ description = "Bot that was used in the PunyHuman Official Discord Server. Now o
 authors = ["Justin <justin@aperturebot.science>"]
 readme = "README.md"
 
+[tool.poetry.requires-plugins]
+poetry-plugin-export = "^1.8.0"
+
 [tool.poetry.dependencies]
 python = "^3.11"
 pyyaml = "^6.0.1"

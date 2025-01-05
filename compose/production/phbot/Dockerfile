@@ -4,11 +4,12 @@ FROM python:${PYTHON_VERSION} as python
 
 FROM python as python-poetry-stage
 ARG BUILD_ENVIRONMENT=production
-RUN apt-get update && apt-get install --no-install-recommends -y curl
+RUN apt-get update && apt-get install --no-install-recommends -y curl g++
 RUN curl -sSL install.python-poetry.org | POETRY_HOME=/opt/poetry python -
 ENV PATH /opt/poetry/bin:$PATH
 COPY poetry.lock poetry.lock
 COPY pyproject.toml pyproject.toml
+RUN poetry install --no-root
 RUN poetry export --without-hashes > /tmp/requirements.txt
 
 # Python build stage
