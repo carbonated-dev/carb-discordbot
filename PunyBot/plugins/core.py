@@ -508,7 +508,7 @@ class CorePlugin(Plugin):
                         "name": f"{author_name}: *NO CONTENT*",
                         "value": str(msg.id)
                     })
-            elif len(msg.content) > 100:
+            elif len(f"{author_name}: {msg.content}") > 100:
                 choices.append({
                     "name": f"{author_name}: {msg.content[:95-len(author_name)]}...",
                     "value": str(msg.id)
