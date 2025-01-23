@@ -31,6 +31,8 @@ class SupportPlugin(Plugin):
         if member:
             if isinstance(member, int):
                 gmember = self.client.state.guilds.get(event.guild.id).get_member(member)
+                if not gmember:
+                    return False
                 if bool(set(gmember.roles).intersection(CONFIG.support_system.support_roles)):
                     return True
                 else:
